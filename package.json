@@ -1,6 +1,6 @@
 {
   "name": "db3-streamify",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Streaming plugin for db3",
   "scripts": {
     "test": "node test"

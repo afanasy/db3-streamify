@@ -6,16 +6,16 @@ module.exports = function (ctx, next) {
   return function (ctx, next) {
     if (_.isFunction(ctx.done))
       return next()
-    if (ctx.sql) {
-      if (_.contains(['insert', 'update', 'delete'], ctx.sql.name)) {
+    if (ctx.query) {
+      if (_.contains(['insert', 'update', 'delete', 'save', 'duplicate'], ctx.query.name)) {
         return new stream.Writable({
           objectMode: true,
           write: function (data, encoding, next) {
-            if (ctx.sql.name != 'delete')
-              ctx.sql.set = data
+            if (ctx.query.name != 'delete')
+              ctx.query.set = data
             else
-              ctx.sql.where = data
-            ctx.db.query(ctx.sql, next)
+              ctx.query.where = data
+            ctx.db.query(ctx.query, next)
           }
         })
       }
