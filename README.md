@@ -1,2 +1,1 @@
-# db3-streamify
-Streaming plugin for db3
+Streaming plugin for [db3](https://github.com/afanasy/db3)
